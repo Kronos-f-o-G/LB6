@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="archive">
+    <div class="header">
+        <h1>Регистрация</h1>
+    </div>
+
+    <div class="form-container" style="width: 400px; margin: 0 auto;">
+        {% if error %}
+            <p style="color: #ffcccc; font-weight: bold;">{{ error }}</p>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Логин" style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-radius: 5px; font-size: 16px; box-sizing: border-box;">
+            <input type="email" name="email" placeholder="Email" style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-radius: 5px; font-size: 16px; box-sizing: border-box;">
+            <input type="password" name="password" placeholder="Пароль" style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-radius: 5px; font-size: 16px; box-sizing: border-box;">
+            <input type="submit" value="Зарегистрироваться" style="background: #ffffff; color: #1abc9c; border: none; padding: 10px 30px; font-size: 18px; font-weight: bold; cursor: pointer; border-radius: 5px; width: 100%;">
+        </form>
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'login' %}" style="color: white;">Уже есть аккаунт? Войти</a>
+        </p>
+    </div>
+</body>
+</html>
